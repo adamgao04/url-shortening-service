@@ -16,7 +16,7 @@ public class InMemoryUrlService implements UrlService{
     }
 
     @Override
-    public String shortenRecord(String longUrl) {
+    public String shortenUrl(String longUrl) {
         String code = codeGenerator.generate(longUrl);
 
         storage.put(code, new UrlRecord(longUrl));
