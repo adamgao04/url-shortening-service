@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application' // Essential for CLI apps
+}
+
+group = 'com.cisco'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    // This must match your package path exactly
+    mainClass = 'com.cisco.shortener.Main'
+}
+
+dependencies {
+    // JUnit 5 for your tests
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+}
+
+test {
+    useJUnitPlatform()
+}

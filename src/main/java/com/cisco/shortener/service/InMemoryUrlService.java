@@ -24,7 +24,7 @@ public class InMemoryUrlService implements UrlService{
     }
 
     @Override
-    public UrlRecord getRecord(String shortUrl) throws UrlNotFoundException{
+    public UrlRecord getRecord(String shortUrl) throws UrlNotFoundException {
         UrlRecord record = storage.get(shortUrl);
         if (record == null) {
             throw new UrlNotFoundException(shortUrl);
