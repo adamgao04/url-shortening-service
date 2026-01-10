@@ -9,4 +9,5 @@ public interface UrlService {
     String shortenUrl(String longUrl);
     UrlRecord getRecord(String shortUrl) throws UrlNotFoundException;
     Map<String, UrlRecord> getAllRecords();
+    UrlRecord getStats(String shortUrl) throws UrlNotFoundException;
 }

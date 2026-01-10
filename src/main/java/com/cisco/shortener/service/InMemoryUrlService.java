@@ -29,11 +29,21 @@ public class InMemoryUrlService implements UrlService{
         if (record == null) {
             throw new UrlNotFoundException(shortUrl);
         }
+        record.incrementClickCount();
         return record;
     }
 
     @Override
     public Map<String, UrlRecord> getAllRecords() {
         return new HashMap<>(storage);
+    }
+
+    @Override
+    public UrlRecord getStats(String shortUrl) throws UrlNotFoundException {
+        UrlRecord record = storage.get(shortUrl);
+        if (record == null) {
+            throw new UrlNotFoundException(shortUrl);
+        }
+        return record;
     }
 }

@@ -25,6 +25,9 @@ public class Main {
             case "list":
                 handleList();
                 break;
+            case "stats":
+                handleStats(args);
+                break;
             default:
                 System.out.println("Unknown command: " + command);
                 printUsage();
@@ -56,6 +59,20 @@ public class Main {
     private static void handleList() {
         service.getAllRecords().forEach((code, record) ->
                 System.out.println(code + " -> " + record.getLongUrl()));
+    }
+
+    private static void handleStats(String[] args) {
+        if (args.length < 2) {
+            System.out.println("Error: Please provide a short code.");
+            return;
+        }
+        try {
+            UrlRecord record = service.getStats(args[1]);
+            System.out.println("Original URL: " + record.getLongUrl());
+            System.out.println("Click count:" + record.getClickCount());
+        } catch (UrlNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void printUsage() {
