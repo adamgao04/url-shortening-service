@@ -6,32 +6,50 @@ import com.cisco.shortener.service.InMemoryUrlService;
 import com.cisco.shortener.service.UrlService;
 import com.cisco.shortener.util.Base62Generator;
 
+import java.util.Scanner;
+
 public class Main {
     private static final UrlService service = new InMemoryUrlService(new Base62Generator());
 
     public static void main(String[] args) {
-        if (args.length < 1) {
-            printUsage();
-        }
-        String command = args[0].toLowerCase();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--- Cisco URL Shortener Service Active ---");
+        System.out.println("Type 'exit' to quit. Available: shorten, get, list, stats");
 
-        switch (command) {
-            case "shorten":
-                handleShorten(args);
+        while (true) {
+            System.out.print("\n> ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting application...");
                 break;
-            case "get":
-                handleGet(args);
-                break;
-            case "list":
-                handleList();
-                break;
-            case "stats":
-                handleStats(args);
-                break;
-            default:
-                System.out.println("Unknown command: " + command);
-                printUsage();
+            }
+
+            // Split input by space to simulate the args[] array
+            String[] parts = input.split("\\s+");
+            if (parts.length == 0 || parts[0].isEmpty()) continue;
+
+            String command = parts[0].toLowerCase();
+
+            switch (command) {
+                case "shorten":
+                    handleShorten(parts);
+                    break;
+                case "get":
+                    handleGet(parts);
+                    break;
+                case "list":
+                    handleList();
+                    break;
+                case "stats":
+                    handleStats(parts);
+                    break;
+                default:
+                    System.out.println("Unknown command: " + command);
+                    printUsage();
+            }
         }
+        scanner.close();
     }
 
     private static void handleShorten(String[] args) {
