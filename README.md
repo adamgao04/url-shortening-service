@@ -1,6 +1,6 @@
 # URL Shortening Service Overview
 A URL shortening service built with Java 21 and Spring Boot. This application supports both an interactive Command Line Interface (CLI) and a RESTful Web API simultaneously.
-We use a gradle wrapper to ensure consistent build environment.
+We use a Gradle wrapper to ensure consistent build environment.
 
 # Implemented extensions:
 - Extension 1: Click Statistics
