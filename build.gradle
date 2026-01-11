@@ -1,6 +1,8 @@
 plugins {
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
     id 'java'
-    id 'application' // Essential for CLI apps
+    id 'application' // <--- ADD THIS LINE
 }
 
 group = 'com.cisco'
@@ -11,14 +13,14 @@ repositories {
 }
 
 application {
-    // This must match your package path exactly
-    mainClass = 'com.cisco.shortener.Main'
+    // Note: Since you are moving to Spring Boot,
+    // this should eventually point to your @SpringBootApplication class
+    mainClass = 'com.cisco.shortener.UrlShortenerApplication'
 }
 
 dependencies {
-    // JUnit 5 for your tests
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 run {

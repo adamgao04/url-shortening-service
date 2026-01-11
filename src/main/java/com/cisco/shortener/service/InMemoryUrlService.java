@@ -3,12 +3,15 @@ package com.cisco.shortener.service;
 import com.cisco.shortener.exception.UrlNotFoundException;
 import com.cisco.shortener.model.UrlRecord;
 import com.cisco.shortener.util.CodeGenerator;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@Service
 public class InMemoryUrlService implements UrlService{
-    private final Map<String, UrlRecord> storage = new HashMap<>();
+    private final Map<String, UrlRecord> storage = new ConcurrentHashMap<>();
     private final CodeGenerator codeGenerator;
 
     public InMemoryUrlService(CodeGenerator codeGenerator) {

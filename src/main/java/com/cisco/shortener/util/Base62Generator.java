@@ -1,7 +1,10 @@
 package com.cisco.shortener.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.concurrent.atomic.AtomicLong;
 
+@Component
 public class Base62Generator implements CodeGenerator {
     private static final String CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final int BASE = CHARACTERS.length();
