@@ -15,6 +15,6 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public String handleUrlNotFound(UrlNotFoundException e) {
         // This is the message that will appear in the browser/Postman
-        return "Error: " + e.getMessage();
+        return e.getMessage();
     }
 }
